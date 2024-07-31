@@ -1,0 +1,26 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("background.png"); /* Replace 'background.jpg' with the path to your image */
+  background-size: cover; /* Ensures the image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+  background-position: center; /* Centers the background image */
+  font-family: Arial, sans-serif;
+  color: white; /* Adjust the text color to be visible over the background image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#heading-wrap {
+  background-color: brown;
+  width: 100vw;
+
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
