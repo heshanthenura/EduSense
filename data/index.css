@@ -1,26 +1,76 @@
 html,
-body {
+body,
+* {
   margin: 0;
   padding: 0;
 }
 
-body {
-  background-image: url("background.png"); /* Replace 'background.jpg' with the path to your image */
-  background-size: cover; /* Ensures the image covers the entire element */
-  background-repeat: no-repeat; /* Prevents the background image from repeating */
-  background-position: center; /* Centers the background image */
-  font-family: Arial, sans-serif;
-  color: white; /* Adjust the text color to be visible over the background image */
+#heading-wrap {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#score-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  flex-direction: column;
+  gap: 0;
 }
 
-#heading-wrap {
-  background-color: brown;
-  width: 100vw;
+#question-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
 
+#question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #ccf6c1;
+  border-radius: 50px;
+  width: 80vw;
+  height: 45vh;
+}
+
+.q-text {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 200px;
+  color: #ff6452;
+  font-weight: bolder;
+}
+
+#answers-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 90px;
+
+}
+
+.answer {
+  background-color: blue;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: auto 1fr;
+  border-radius: 50px;
+  padding: 10px;
+  justify-items: center;
+  align-items: center;
+  width: 160px;
+  height: 70px;
+}
+
+.answer img {
+  width: 70px;
+}
+
+.answer h1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
+  color: white;
 }
