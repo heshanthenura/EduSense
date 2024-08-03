@@ -54,7 +54,6 @@ body,
 }
 
 .answer {
-  background-color: blue;
   display: grid;
   grid-template-columns: auto 1fr;
   border-radius: 50px;
