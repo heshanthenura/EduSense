@@ -73,3 +73,27 @@ body,
   font-size: 50px;
   color: white;
 }
+
+#wrong-wrap,
+#correct-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+#wrong-wrap h1 {
+  font-size: 100px;
+  color: red;
+}
+
+#correct-wrap h1 {
+  font-size: 100px;
+  color: rgb(20, 146, 8);
+}
