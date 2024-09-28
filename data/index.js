@@ -111,8 +111,10 @@ function fetchAnswer(correctAnswer) {
         ).textContent;
         if (parseInt(correctAnswerText) === correctAnswer) {
           showFeedback("#correct-wrap");
+          document.getElementById("play-correct-sound").click();
         } else {
           showFeedback("#wrong-wrap");
+          document.getElementById("play-wrong-sound").click();
         }
         
         // Generate a new question after displaying feedback
@@ -126,10 +128,20 @@ function showFeedback(elementId) {
   const feedbackElement = document.querySelector(elementId);
   feedbackElement.style.display = "flex";
   
+  if (elementId === "#correct-wrap") {
+    // Get the current score
+    const scoreElement = document.getElementById("c-score");
+    let currentScore = parseInt(scoreElement.textContent);
+    
+    // Increment the score
+    scoreElement.textContent = currentScore + 1;
+  }
+  
   setTimeout(() => {
     feedbackElement.style.display = "none";
   }, 2000); // Show feedback for 2 seconds
 }
+
 
 function resetAnswer() {
   const xhttp = new XMLHttpRequest();

@@ -89,12 +89,30 @@ void initServer()
   server.on("/answer", HTTP_GET, [](AsyncWebServerRequest *request)
             { request->send(200, "text/plain", detectedAnswer); });
 
+  server.on("/c.mp3", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/c.mp3", "audio/mpeg");  // Serve the MP3 file from SPIFFS
+  });
+
+  // Serve w.mp3
+  server.on("/w.mp3", HTTP_GET, [](AsyncWebServerRequest *request) {
+    request->send(SPIFFS, "/w.mp3", "audio/mpeg");  // Serve the MP3 file from SPIFFS
+  });
+
   // Endpoint to reset the detected answer
   server.on("/reset", HTTP_GET, [](AsyncWebServerRequest *request)
             {
               detectedAnswer = "0"; // Reset detectedAnswer to "0"
-              request->send(200, "text/plain", "Answer reset");
-            });
+              digitalWrite(15,HIGH);
+              digitalWrite(2,HIGH);
+              digitalWrite(4,HIGH);
+              digitalWrite(6,HIGH);
+    
+              delay(100);
+              digitalWrite(15,LOW);
+              digitalWrite(2,LOW);
+              digitalWrite(4,LOW);
+              digitalWrite(5,LOW);
+              request->send(200, "text/plain", "Answer reset"); });
 
   server.begin();
 }
@@ -126,6 +144,11 @@ void setup()
 
   pinMode(triggerPin4, OUTPUT);
   pinMode(echoPin4, INPUT);
+
+  pinMode(15, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
 
   initSPIFFS();
   WiFi.softAP(ssid, password);
@@ -161,6 +184,9 @@ void loop()
       detectedAnswer = "1"; // Store the detected answer
       handDetected1 = false;
       startTime1 = 0;
+      digitalWrite(15, HIGH);
+      delay(100);
+      digitalWrite(15, LOW);
     }
   }
   else
@@ -181,6 +207,9 @@ void loop()
       detectedAnswer = "2"; // Store the detected answer
       handDetected2 = false;
       startTime2 = 0;
+      digitalWrite(2, HIGH);
+      delay(100);
+      digitalWrite(2, LOW);
     }
   }
   else
@@ -201,6 +230,9 @@ void loop()
       detectedAnswer = "3"; // Store the detected answer
       handDetected3 = false;
       startTime3 = 0;
+      digitalWrite(4, HIGH);
+      delay(100);
+      digitalWrite(4, LOW);
     }
   }
   else
@@ -221,6 +253,9 @@ void loop()
       detectedAnswer = "4"; // Store the detected answer
       handDetected4 = false;
       startTime4 = 0;
+      digitalWrite(5, HIGH);
+      delay(100);
+      digitalWrite(5, LOW);
     }
   }
   else

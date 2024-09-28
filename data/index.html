@@ -13,11 +13,7 @@
       <div id="score-wrap">
         <div id="c-score-wrap">
           <h1>SCORE</h1>
-          <h1 id="c-score">2500</h1>
-        </div>
-        <div id="h-score-wrap">
-          <h1>High Score</h1>
-          <h1 id="h-score">2500</h1>
+          <h1 id="c-score">0</h1>
         </div>
       </div>
       <div id="logo-and-slogan">
@@ -64,5 +60,40 @@
     <div id="correct-wrap">
       <h1>CORRECT ANSWER</h1>
     </div>
+    <audio id="correct-sound" muted="true" src="./c.mp3" preload="auto"></audio>
+    <audio id="wrong-sound" muted="true" src="./w.mp3" preload="auto"></audio>
+    
+    <button hidden id="play-correct-sound" onclick="playCorrectSound()">Play Correct Sound</button>
+    <button hidden id="play-wrong-sound" onclick="playWrongSound()">Play Wrong Sound</button>
+    
+    <script>
+      let userInteracted = false;
+    
+      // Function to play the correct sound
+      function playCorrectSound() {
+        const correctSound = document.getElementById("correct-sound");
+        if (userInteracted) {
+          correctSound.muted = false; // Unmute the audio
+          correctSound.play(); // Play the sound
+        }
+      }
+    
+      // Function to play the wrong sound
+      function playWrongSound() {
+        const wrongSound = document.getElementById("wrong-sound");
+        if (userInteracted) {
+          wrongSound.muted = false; // Unmute the audio
+          wrongSound.play(); // Play the sound
+        }
+      }
+    
+      // Listen for any interaction to allow sound playing
+      document.addEventListener('click', () => {
+        userInteracted = true;
+      });
+  
+    </script>
+    
+    
   </body>
 </html>
