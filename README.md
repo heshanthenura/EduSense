@@ -1,5 +1,7 @@
 # EduSense 
 
+<img src="ui.png">
+
 ## 1. Introduction
 EduSense, is an innovative touchless educational tool designed to help children with 
 disabilities interact with educational content using hand gestures. The system utilizes 
